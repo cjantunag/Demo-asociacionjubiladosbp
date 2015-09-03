@@ -25,6 +25,6 @@ if ($V_typePrint!="" || $V_typeSend!="") {
 	//$TMP=ob_get_contents();
 	//ob_end_clean();
 	// FALTA: recoger el contenido y filtrar URL para poner SEO en los enlaces antiguos sin SEO 
-	//echo $TMP;   cambio 2
+	//echo $TMP;
 }
 ?>

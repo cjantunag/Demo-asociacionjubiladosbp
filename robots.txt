@@ -1,0 +1,11 @@
+User-agent: *
+Disallow: /
+Disallow: /blocks/
+Disallow: /files/
+Disallow: /font/
+Disallow: /images/
+Disallow: /language/
+Disallow: /modules/
+Disallow: /privado/
+Disallow: /templates/
+Disallow: /themes/

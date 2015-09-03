@@ -1,0 +1,309 @@
+<HTML>
+<HEAD><TITLE>Ayuda. Generacion de Modulo de gestion de tabla base de datos</TITLE>
+<STYLE>
+body, form, pre, td, p, div { font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 10pt;}
+h1, h3 { font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 14pt; font-weight: bold}
+A { text-decoration: none; font-size: 10pt; font-family: Verdana, Arial, Helvetica, sans-serif; color: blue}
+A:hover { font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 10pt; text-decoration: underline; color: red}
+th, dt, b { font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 10pt; font-weight: bold;}
+</STYLE>
+</HEAD>
+<BODY BGCOLOR="#FFFFFF">
+<IMG SRC="logo.gif" ALT="RAD">
+<B>Ayuda. Generaci&oacute;n de M&oacute;dulo de gesti&oacute;n de tabla.</B>
+<HR noshade size=1>
+		<DL>
+			<DT>
+				<B>Aspecto:</B>
+				<DD>Es el fichero que contiene las descripciones de los tipos de letra,
+				formatos de tablas (edición, listado, menu, cabecera) y los colores de la p&aacute;gina.
+
+			<BR><BR><DT>
+				<B>Base de Datos:</B>
+				<DD>Nombre de la base de datos SQL.
+
+			<BR><BR><DT>
+				<B>Tabla:</B>
+				<DD>Nombre de la tabla a gestionar, contenida en la base de datos anterior.
+
+			<BR><BR><DT>
+				<B>Opciones:</B> (Backup, Browse, Detail, Search, Print, New, Edit, Delete, Jump)
+				<DD>Indica si se permite hacer copia de datos, listar, ver un detalle de registro, buscar, imprimir, crear, editar, borrar y/o saltar registros de la tabla.
+				Si no se permite ver el detalle, pero sí editar, desde la pantalla del listado se pasa a la edición 
+				del registro sin pasar por la de detalle.
+
+			<BR><BR><DT>
+				<B>Filto de Tabla (por defecto):</B>
+				<DD>Filtro que se aplicará en las operaciones de listado y gestión de la tabla. 
+				Contiene la cláusula <i>where</i> SQL con las columnas de la tabla y valores (no se debe
+				poner la palabra <i>where</i>). Ejemplo: <i>codprovincia = '15' or codmunicipio LIKE '15%'</i>
+
+			<BR><BR><DT>
+				<B><u>Nombre de P&aacute;gina Inicial:</u></B>
+				<DD>Nombre de la p&aacute;gina PHP que se va a generar y la que se debe invocar
+				para gestionar la tabla. No se le debe poner la extensi&oacute;n. <br>
+				En el directorio debería existir una denominada "index", que sea la que inicie la aplicación.
+				Para ello es aconsejable elegir la tabla principal, para que se muestre al iniciar la aplicación.
+
+			<BR><BR><DT>
+				<B>T&iacute;tulo de p&aacute;gina:</B>
+				<DD>T&iacute;tulo de la ventana donde se ejecuta la p&aacute;gina.
+
+			<BR><BR><DT>
+				<B><u>Directorio de la p&aacute;gina inicial:</u></B>
+				<DD>Nombre del subdirectorio donde se grabar&aacute;n los modulos.
+
+			<BR><BR><DT>
+				<B>Número max. filas por pantalla:</B>
+				<DD>N&uacute;mero de registros que se presentar&aacute;n en el listado (browse).
+
+			<BR><BR><DT>
+				<B>Campo(s) Clave:</B>
+				<DD>Este módulo asume que la tabla tiene uno o varios campos
+				clave (&iacute;ndices primarios). Los nombres de estos campos se deben
+				poner separados por comas.
+				Muchas tablas usan como &iacute;ndice primario un campo autoincremental.<br>
+				Si la tabla no tiene &iacute;ndices primarios se utilizarán <i>todos</i> los campos
+				como clave (de esta forma se asegura la unicidad de un registro).
+
+			<BR><BR><DT>
+				<B>Usa entorno RAD ?</B>
+				<DD>Marcar en caso de utilizar este módulo dentro del sistema RAD, y desmarcarlo si
+				se desea crear una aplicación completa.
+
+			<BR><BR><DT>
+				<B>Nivel de Seguridad:</B>
+				<DD>Seleccione el Nivel de Seguridad deseado: <i>sin control de usuario</i> (cualquiera puede operar con el módulo), con <i>Control por Usuario</i>
+				(solicita código de usuario y clave antes de comenzar a operar con el módulo), y <i>Control por Usuario
+				y Tabla</i> (control anterior, y verifica tabla de usuarios y tablas -ACL-).<br>
+				Para poder utilizar Control de Usuario se debe modificar el módulo <i>"RAD_login.php"</i> que es el que
+				contiene la validación del usuario o usuario y tabla. Normalmente este usuario se valida contra una tabla
+				de la misma base de datos. Esta tabla de usuario debe guardar el código de usuario y su clave, y 
+				opcionalmente las tablas o modulos a los que este usuario tiene acceso (ACL).
+
+			<BR><BR><DT>
+				<B>Funcion Primera:</B>
+				<DD>Tipo de función que se ejecuta al entrar al módulo: <i>Consulta General, Detalle de Registro, 
+				Búsqueda, Listado, Nuevo Registro, Edita Registro, Borra Registro</i>. Por defecto es la Consulta General.
+
+			<BR><BR><DT>
+				<B>Graba Log de comandos SQL?:</B>
+				<DD>Márquese para grabar en el fichero <i>Log.sql</i> todos los comandos SQL que ejecutan los 
+				usuarios sobre la tabla desde este módulo. Desde este fichero se puede recontruir toda la historia
+				de la tabla, y la situación final.
+
+			<BR><BR><DT>
+				<B><u>TABLA DE COLUMNAS O CAMPOS</u></B>
+				<DD>Esta tabla contiene cada una las campos (o seudocampo) de la tabla a gestionar por este módulo.
+				A cada una de estas columnas se les debe definir las propiedades que se detallan a continuación.
+
+			<BR><BR><DT>
+				<B>Orden:</B>
+				<DD>Número de órden por el que aparece una columna en el módulo. Sólo es necesario rellenarlo en 
+				caso de querer cambiar el órden en el que aparece actualmente, y además solo es necesario rellenar
+				el órden de los que cambian.	
+
+			<BR><BR><DT>
+				<B>T&iacute;tulo:</B>
+				<DD>Nombre con el que aparece este campo en los listados del módulo.
+
+			<BR><BR><DT>
+				<B>Campo:</B>
+				<DD>Nombre del campo de la tabla en la base de datos. Este nombre puede ser ficticio (inexistente)
+				para el caso de un <b><i>seudocampo</i></b>. Es decir aquel que tiene como Tipo Campo <i>function</i>.
+				El <i>seudocampo</i> se utiliza para asociar funciones externas a cada una de las operaciones que 
+				realiza el modulos sobre la tabla. Por ejemplo: si en la Consulta General o de Detalle de una Tabla 
+				deseamos listar información asociada a cada registro procedente de otras tablas o ficheros, etc.
+				Si al crear, borrar o modificar un registro deseamos hacer operaciones sobre otras tablas relacionadas.
+
+			<BR><BR><DT>
+				<B>Long. Max.:</B>
+				<DD>M&aacute;xima longitud del campo de la tabla.
+
+			<BR><BR><DT>
+				<B>Long. Entr.:</B>
+				<DD>M&aacute;xima longitud de campo de entrada en pantalla, para los campos de entrada de tipo texto (Input).
+				Para los campos de texto grandes (Text) se debe especificar el número de filas, una "x" y el 
+				número de columnas. Por ejemplo: 60x15.
+
+			<BR><BR><DT>
+				<B>Orden (Order) :</B>
+				<DD>Indica si este campo se utilizar&aacute; para ordenar los listados en la Consulta General de la tabla.
+
+			<BR><BR><DT>
+				<B>Vacio (Null):</B>
+				<DD>Indica si este campo puede estar vacio, o debe exigirse un valor.
+
+			<BR><BR><DT>
+				<B>Tipo Campo:</B>
+				<DD>Indica el tipo de valor que admite este campo de la tabla.
+				<UL>
+					<LI>"String" - Campo de cadena (<i>char, varchar</i>).
+					<LI>"Numeric" - Campo numérico (<i>int, short, double, float, long</i>).
+					<LI>"BLOB" - Campo de cadena larga(<i>blob</i>).
+					<LI>"Enum" - Lista de valores.
+					<LI>"Date" - Fecha.
+					<LI>"DateTime" - Fecha y Hora.
+					<LI>"Time" - Hora.
+					<LI>"password" - Cadena cifrada con función password.
+					<LI>"crypt" - Cadena cifrada con función crypt.
+					<LI>"MD5" - Cadena cifrada con función MD5.
+					<LI>"Auto_Inc." - Campo numérico autoincremental (<i>int, short, double</i>).
+					<LI>"UniqID." - Campo aleatorio, único e identificativo.
+					<LI>"Function" - <b><i>Seudocampo</b></i>. Campo que no existe en la tabla. Pero el módulo
+					lo considera como una columna más, y al que normalmente se le asocian funciones externas.
+					No interviene en las operaciones habituales de la tabla, aunque la función externa puede realizar
+					operaciones sobre las tablas que desee.
+				</UL>
+
+			<BR><BR><DT>
+				<B>Tipo Entrada:</B>
+				<DD>Indica el tipo de campo entrada que se va autilizar en la p&aacute;gina HTML 
+				para editar este campo. Se visualiza con el mismo valor que aparecería en el campo de entrada.<BR>
+				<UL>
+					<LI>"Input" - Tag INPUT HTML. Campo de entrada habitual.
+					<LI>"Password" - Tag PASSWORD HTML. Campo de entrada enmascarado.
+					<LI>"Pick-List" - Genera un tag SELECT de HTML. Campo de entrada 
+					de selección entre múltiples valores. Los posibles valores se especifican 
+					en "Datos Extra" separados por coma, y cada valor y su literal se separa por dos puntos.
+					Por ejemplo: 1:Rojo,2:Verde,3:Azul.
+					Si no se especifica nada en "Datos Extra", se construir&aacute
+					con dos posibles valores 0 y 1.
+					<LI>"Pick-List(M)" - Similar al anterior, pero se permite 
+					seleccionar más de un valor.
+					<LI>"Pick-List+DB" - Similar al anterior, pero los valores a mostrar
+					se obtienen de otra tabla relacionada.
+					Se debe especificar en "Datos Extra" el <i>nombre_de_:campo_indice:campo_literal_a_mostrar</i>.
+					El campo_indice debe ser del mismo nombre en ambas tablas.
+					El campo literal es el correspondiente a la tabla relacionada.
+					Tanto el campo indice como el literal pueden ser más de un campo separados por una coma.
+					Como ejemplo: provincias:codprovincia:nombreprovincia. O incluso: municipios:codmunicipio,codprovincia:nombremunicipio.
+					<LI>"Pick-List+DB(M)" - Similar al anterior pero permite seleccionar varias posibilidades.
+					<LI>"Pop Up+DB" - Genera un tag INPUT que al pulsar sobre él
+					aparecer&aacute; una nueva pantalla donde se mostrarán valores de otra tabla relacionada.
+					El funcionamiento de los Datos Extra y su contenido es similar al de Pick-List+DB, pero
+					la forma de elegir un valor es el de una ventana aparte.
+					<LI>"Radio-List" - Genera un grupo de tag RADIO de HTML. El funcionamiento de "Datos Extra"
+					es similar a "Pick-List".
+					Si no se especifica nada en "Datos Extra", se generar&aacute;n
+					dos botones, uno con valor 0 y otro con valor 1.
+					<LI>"Radio-List+DB" - Genera un grupo de tag RADIO de HTML. El funcionamiento de "Datos Extra"
+					es similar a "Pick-List+DB".
+					<LI>"Date" - Genera tres tag SELECT de HTML. Uno para el
+					d&iacute;a, otro para el mes, y otro para el a&ntilde;o.
+					<LI>"DateTime" - Combina los campos de entrada "Date" y "Time".
+					<LI>"Time" - Genera tres tag INPUT de HTML. Uno para la
+					hora, otro para el minuto, y otro para el segundo.
+					<LI>"Checkbox" - Genera un tag CHECKBOX de HTML, con los valores
+					especificados en "Datos Extra". Su funcionamiento es similar a "Pick-List". 
+					Si no se especifican se generan dos posibles valores por defecto (0=No, 1=Si).
+					<LI>"Text" - Genera un tag TEXTAREA de HTML. Es decir un campo de entrada
+					de texto rectangular. Cuyas dimensiones se especifica en "Long. Ent." de la forma
+					<i>filas<b>x</b>columnas</i>.
+					<LI>"Upload file" - Permite enviar un fichero como valor de campo.
+					<LI>"Upload image" - Permite enviar un fichero de imágen como valor de campo.
+					La diferencia con el anterior es únicamente a la hora de visualizar el valor del
+					campo. En el caso de la imágen se muestra directamente sobre el navegador.
+					El fichero es necesario descargarlo para comprobar su contenido.
+					<LI>"Email" - Campo de entrada similar a Input, pero trata el contenido
+					como una dirección Email, de tal forma que al pinchar sobre su contenido
+					se lanza la ventana para componer un mensaje con destino esa dirección.
+					<LI>"URL" - Campo de entrada similar a Input, pero trata el contenido
+					como una dirección URL, de tal forma que al pinchar sobre su contenido
+					se lanza una ventana con esa dirección.
+					<LI>"Function" - Este tipo de campo de entrada indica que no se pied la entrada de nada, ni
+					se muestra nada, sino que invoca una función PHP o HTML contenida en el fichero 
+					indicado en "Datos Extra". Y será esta función la encargada de realizar lo que se desee (mostrar datos, solicitar datos, etc).
+					<LI>"None" - Indica que este tipo de campo no se trata (ni lo edita, ni visualiza su contenido).
+					Se utiliza para los campos autoincrementales y UniqID.
+				</UL>
+
+			<BR><BR><DT>
+				<B>Datos Extra:</B>
+				<DD>Datos que se utilizan para relacionar el campo con valores o campos de otras tablas cuando el Tipo de Entrada
+				de un campo es "Pick-List*", "Pop Up+DB", "Radio-List*" y "Checkbox". La sintaxis es:<BR>
+			<BR>
+		Los campos con Tipo de Entrada no *DB se utiliza como datos extra, parejas de (valor:literal) 
+		separados por coma. Por ejemplo: <B>1:Rojo,2:Verde,3:Azul</B><br>
+		que en el caso de Tipo de Entrada "Radio-List" se vería de la forma siguiente:<br>
+<ul><FORM>
+	<INPUT TYPE="RADIO" NAME="A" VALUE="1">Rojo
+	<INPUT TYPE="RADIO" NAME="A" VALUE="2">Verde
+	<INPUT TYPE="RADIO" NAME="A" VALUE="3">Azul
+</FORM></ul>
+		y en el caso de "Pick-List":<br>
+<ul><FORM>
+	<SELECT>
+		<OPTION VALUE="1">Rojo</OPTION>
+		<OPTION VALUE="2">Verde</OPTION>
+		<OPTION VALUE="3">Azul</OPTION>
+	</SELECT>
+</FORM></ul><br>
+			<BR>
+		Para los campos con Tipo de Entrada *DB (<b>tablas relacionadas</b>) se utiliza como datos extra una terna
+		separados por dos puntos. Donde el primer elemento de la terna en el nombre de la tabla relacionada,
+		el segundo el o los campos indice (con el mismo nombre en ambas tablas), y el tercero el o los campos
+		cuyo literal es el que se va a mostrar.<br><br>
+		Por ejemplo, supongamos que el campo de nuestra tabla se denomina
+		"codprovincia" y esta relacionado con el campo homónimo de otra tabla denominada "provincias", y deseamos 
+		que se muestre en vez del código el nombre de la provincia que está en el campo "nombreprovincia" de la tabla
+		relacionada de "provincias". En este caso los datos extra serían <b>provincias:codprovincia:nombreprovincia</b>.<br><br>
+		Un segundo ejemplo más sería si nuestra tabla tiene dos campos "codprovincia" y "codmunicipio" los cuales están 
+		relacionados con otros campos homónimos de otra tabla denominada "municipios". Y deseamos que en vez de un código 
+		de municipio aparezca un nombre de municipio que se almacena en la tabla relacionada de "municipios" en la columna 
+		"nombremunicipio". En este caso los datos extra serán: <b>municipios:codmunicipio,codprovincia:nombremunicipio</b>.<br><br>
+		Si además del nombre del municipio deseamos que aparezca su "población", y éste también es un campo de la 
+		tabla de "municipios" entonces los datos extra quedarían de la forma: 
+			<b>municipios:codmunicipio,codprovincia:nombremunicipio,población</b>.<br><br>
+			<B>NOTA! </B>La sintaxis de estos datos extra no se comprueba.
+			Por ello se deben comprobar minuciosamente.
+
+			<BR><BR><DT>
+				<B>Buscar por (search):</B>
+				<DD>Indica que este campo se puede utilizar para buscar
+				en la tabla, o seleccionar un grupo de registros.			
+
+			<BR><BR><DT>
+				<B>Visible:</B>
+				<DD>Indica que este campo se mostrar&aacute; en los listados.
+				En el detalle de un registro siempre aparecer&aacute;.
+
+			<BR><BR><DT>
+				<B>Editable en listado (Br-Edit):</B>
+				<DD>Campo editable directamente sobre la pantalla de listado de registros.
+
+			<BR><BR><DT>
+				<B>Editable en listado (Fd-Edit):</B>
+				<DD>Columna editable directamente sobre la pantalla de listado de registros.
+
+			<BR><BR><DT>
+				<B>Editable por Separado (Fd-Edit):</B>
+				<DD>Campo editable directamente sobre la pantalla de listado de registros, de detalle o de edición.
+
+			<BR><BR><DT>
+				<B>Solo Lectura (R-Only):</B>
+				<DD>Campo no modificable.
+
+			<BR><BR><DT>
+				<B>Valor Def.:</B>
+				<DD>Valor por defecto al crear un registro nuevo.
+
+			<BR><BR><DT>
+				<B>onFocus Func.:</B>
+				<DD>Función JavaScript que se ejecuta al obtener el foco el campo cuando se crea o modifica un registro.
+
+			<BR><BR><DT>
+				<B>onChange Func.:</B>
+				<DD>Función JavaScript que se ejecuta al modificar el campo cuando se crea o modifica un registro.
+
+			<BR><BR><DT>
+				<B>onBlur Func.:</B>
+				<DD>Función JavaScript que se ejecuta al perder el foco el campo cuando se crea o modifica un registro.
+
+			<BR><BR><DT>
+				<B>Ayuda:</B>
+				<DD>Literal de ayuda que aparece al editar o crear un nuevo registro.
+		</DL>
+		<BR>
+	</BODY>
+</HTML>

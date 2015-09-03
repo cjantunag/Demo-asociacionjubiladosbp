@@ -1,0 +1,145 @@
+			 RAD Generator
+
+
+Introduction
+============
+RAD Generator is a PHP application builder. When we build a PHP-application that
+manipule a tables group, we build a modules group that make the same things
+over each table. The modules group has many common functions and controls.
+If we make a application that build this module automatically, we will have 
+the most work already made. And after that, we only need to modify the module
+that have a different control, function or appearance.
+
+This is the main idea that i have to make the application-builder-environment RAD.
+Over a first application-builder called "phpgen", I added new functions and
+controls I needed. And after many modifications the application-builder "phpgen"
+had many differences over the original. And that's why I decide to call it
+with "RAD".
+
+This application is very easy to install and unistall. 
+
+To install you must only uncompress over a web directory 
+in a computer with Apache, MySQL (or SQL DataBase) and PHP 4.0 or later.
+After that, you must configure over the browser picking the URL
+that point to this server and this directory. That's All!.
+
+To uninstall you only need remove that directory.
+
+To make a application that control all the tables of one database,
+you only need to pick the browser with the URL that point to this server 
+and this directory and select de "A" option, select the correct parameters
+(database name, database user, theme....) and continue with the next pages.
+At the end you will have all the PHP modules, each one control a table.
+
+
+After the end you can modify the PHP sources, ..... But before you can exploit
+all the posibilyties that RAD offer to you.
+
+
+
+
+
+Basic theory
+============
+RAD generates a one-file script(update: if one wishes, he could tell RAD
+to generate many files, one file per functional block of code, which could
+be shared between different scripts) that calls itself with the parameter
+"$func". $func determines what should be done with the rest of the
+data.
+
+The script allows listing, searching, appending and editing of data
+in an SQL database (or rather in one table of a database). The table
+is supposed to have one field that is an unique index for each record.
+(personally I always has an autoincrement field as an unique index)
+
+In the start-form (genform.php) you specify:
+* The name of the themefile
+* The name of the database
+* The name of the table
+* The filename of the generated file (without .php extension)
+* The name of the unique field and if it is numeric or not
+
+For each EDITABLE FIELD in the table you specify:
+* The title (what the user sees, leave the title empty if you want to 
+  hide the field from the user)
+* The name (SQL fieldname)
+* Maximum input size (number of characters)
+* Field width (in the edit/new-form)
+* The type of field
+* The sort of input tag you want for the field
+* Depending on type of input tag, possible extra data to generate
+  the input the right way.
+* If the field should be searchable
+* If the field should be shown in lists
+
+When you press "Generate" the script is generated and stored with
+the choosen filename in the directory projects together with its
+associated project file (can be used to regenerate a file).
+
+
+Sharing files between scripts
+=============================
+It's a new feature of RAD. In genform.php under the tables with
+descriptions of SQL tale columns, you have table with filenames from which
+script is being generated. It gives you great oportunity of selecting, which
+files should be shared (and which not) and specifying path of file, where
+this sharable source code should be stored. You can choose the way the piece
+of code is incorporated (or not) into generating script:
+  * include
+  * copy
+  * force copy
+  * ignore
+
+If you choose "include" option, piece of code will be physically written
+into main script, as it was in previous versions of RAD.
+If you choose "copy if it doesn't exist" option, source file from first
+editable column will be copied into file you specify in second column if the
+destination file doesn't exist.
+"force copy" will do what "copy" does, overwriting previous contents of
+destination file.
+"ignore" will ignore this piece of code completely, allowing you i.e. to not
+include Java Script at all.
+
+Let's say you generated some script and you choosed to use shared files. You
+edited file browse.php, because default behaviour of this code didn't suit
+your needs. Now, You need to add some column to the SQL table. You do it,
+you want to re-generate script with new column and not to loose changes made
+to browse.php. You take RAD, load project file and just need to put your
+edited browse.php filename into second column (destination file, RAD probably
+saved its name into project file and you don't have to change it) and select
+"copy if it doesn't exist". Your own browse.php file won't be overwritten,
+because it exists and proper inclusion code will be put into main script.
+
+With this feature you can share database settings (database host name, SQL
+user, password and database engine type) between your generated scripts
+(these settings are called 'common settings').
+
+If you choose to use shared source files, you got additional benefits, I.e.
+You generated hundreds of scripts, and it occured, that in sql.php a bug
+exists, it appears when you have more than 1000 records in your table.
+You correct shared sql.php file and you have correct behaviour of your
+EVERY generated script! The same could be done i.e. when new version of RAD
+would be released, featuring some nice fancy menus.
+
+
+Themefiles
+==========
+(Reside in ./themesRAD)
+A themefile is a file with regular PHP-variables which inserted to
+the generated code at appropriate places. 
+Please send me nice-looking themefiles, as you may have noticed I'm
+not much of an artist......
+
+The variable "language" selects which "lang-*.php" - file (resides in ./language)
+that should be used to insert all visible text in the generated file. If you
+make your own language-files (in another language) , please send them 
+to me so I can redistribute them. 
+
+Were did you find it ? (if you forgot...)
+=======================================
+
+You can fetch the latest version of RAD via HTTP from my homepage:
+
+...............
+
+Enjoy!

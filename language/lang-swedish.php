@@ -1,0 +1,114 @@
+<?php
+
+define("_CHARSET","ISO-8859-1");
+define("_SEARCH","Sök");
+define("_LOGIN","Logga in");
+define("_WRITES","skriver");
+define("_POSTEDON","Postad");
+define("_NICKNAME","Alias");
+define("_PASSWORD","Lösenord");
+define("_WELCOMETO","Välkommen till");
+define("_EDIT","Redigera");
+define("_DELETE","Radera");
+define("_POSTEDBY","Postad av");
+define("_READS","läsningar");
+define("_GOBACK","[ <a href=\"javascript:history.go(-1)\">Gå Tillbaka</a> ]");
+define("_COMMENTS","kommentarer");
+define("_PASTARTICLES","Föregående Artiklar");
+define("_OLDERARTICLES","Äldre Artiklar");
+define("_BY","av");
+define("_ON"," ");
+define("_LOGOUT","Logga ut");
+define("_WAITINGCONT","Väntande Innehåll");
+define("_SUBMISSIONS","Postningar");
+define("_WREVIEWS","Recensioner");
+define("_WLINKS","Länkar");
+define("_EPHEMERIDS","Dagens Ord");
+define("_ONEDAY","På en dag som denna...");
+define("_ASREGISTERED","Har du inget medlemskap än? Du kan <a href=\"index.php?V_dir=admin&V_mod=nuevousuario&func=new\">bli medlem</a>. Som registrerad medlem har du lite fördelar som en temaväljare, kommentarsinställningar och möjligheten att skriva kommentarer under ditt eget namn.");
+define("_MENUFOR","Meny för");
+define("_NOBIGSTORY","Det finns inget Het Nyhet för Dagen, ännu.");
+define("_BIGSTORY","Dagens mest lästa Nyhet är:");
+define("_SURVEY","Undersökning");
+define("_POLLS","Undersökningar");
+define("_PCOMMENTS","Kommentarer:");
+define("_RESULTS","Resultat");
+define("_HREADMORE","läs mer...");
+define("_CURRENTLY","Det finns för närvarande,");
+define("_GUESTS","gäst(er) och");
+define("_MEMBERS","medlem(mar) som är online.");
+define("_YOUARELOGGED","Du är inloggad som");
+define("_YOUHAVE","Du har");
+define("_PRIVATEMSG","privata meddelanden.");
+define("_YOUAREANON","Du är en anonym besökare. Du kan registrera dig gratis genom att fylla i detta <a href=\"index.php?V_dir=admin&V_mod=nuevousuario&func=new\">formulär</a>");
+define("_NOTE","Notera:");
+define("_ADMIN","Admin:");
+define("_WERECEIVED","Vi har haft");
+define("_PAGESVIEWS","sidvisningar sedan");
+define("_TOPIC","Ämne det ska postas under");
+define("_UDOWNLOADS","Nedladdningar");
+define("_VOTE","Rösta");
+define("_VOTES","Röster");
+define("_MVIEWADMIN","Vy: Endast Administratörer");
+define("_MVIEWUSERS","Vy: Endast Medlemmar");
+define("_MVIEWANON","Vy: Endast Anonyma besökare");
+define("_MVIEWALL","Vy: Alla Besökare");
+define("_EXPIRELESSHOUR","Förfaller inom en timme");
+define("_EXPIREIN","Förfaller om");
+define("_HTTPREFERERS","Vilkar länkar till oss");
+define("_UNLIMITED","Obegränsat");
+define("_HOURS","Timmar");
+define("_RSSPROBLEM","Det är för närvarande problem med rubriker från denna webbplats");
+define("_SELECTLANGUAGE","Välj Språk");
+define("_SELECTGUILANG","Välj Språk för gränssnitt:");
+define("_NONE","Ingen");
+define("_BLOCKPROBLEM","<center>There is a problem right now with this block.</center>");
+define("_BLOCKPROBLEM2","<center>There isn't content right now for this block.</center>");
+define("_MODULENOTACTIVE","Sorry, this Module isn't active!");
+define("_NOACTIVEMODULES","Inactive Modules");
+define("_FORADMINTESTS","(for Admin tests)");
+define("_BBFORUMS","Forums");
+define("_ACCESSDENIED", "Access Denied");
+define("_RESTRICTEDAREA", "You are trying to access to a restricted area.");
+define("_MODULEUSERS", "We are Sorry but this section of our site is for <i>Registered Users Only</i><br><br>You can register for free by clicking <a href=\"index.php?V_dir=admin&V_mod=nuevousuario&func=new\">here</a>, then you can<br>access to this section without restrictions. Thanks.<br><br>");
+define("_MODULESADMINS", "We are Sorry but this section of our site is for <i>Administrators Only</i><br><br>");
+define("_HOME","Home");
+define("_HOMEPROBLEM","There is a big problem here: we have not a Homepage!!!");
+define("_ADDAHOME","Add a Module in your Home");
+define("_HOMEPROBLEMUSER","There is a problem right now on the Homepage. Please check it back later.");
+define("_MORENEWS","More in News Section");
+define("_ALLCATEGORIES","All Categories");
+define("_DATESTRING","%A %d %B @ %H:%M");
+define("_DATESTRING2","%A, %d %B");
+define("_DATE","Date");
+define("_HOUR","Hour");
+define("_UMONTH","Month");
+define("_YEAR","Year");
+define("_JANUARY","January");
+define("_FEBRUARY","February");
+define("_MARCH","March");
+define("_APRIL","April");
+define("_MAY","May");
+define("_JUNE","June");
+define("_JULY","July");
+define("_AUGUST","August");
+define("_SEPTEMBER","September");
+define("_OCTOBER","October");
+define("_NOVEMBER","November");
+define("_DECEMBER","December");
+
+/*****************************************************/
+/* Function to translate Datestrings                 */
+/*****************************************************/
+
+function translate($phrase) {
+    switch($phrase) {
+	case "xdatestring":	$tmp = "%A, %B %d @ %T %Z"; break;
+	case "linksdatestring":	$tmp = "%d-%b-%Y"; break;
+	case "xdatestring2":	$tmp = "%A, %B %d"; break;
+	default:		$tmp = "$phrase"; break;
+    }
+    return $tmp;
+}
+
+?>

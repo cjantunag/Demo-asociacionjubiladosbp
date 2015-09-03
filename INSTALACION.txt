@@ -1,0 +1,57 @@
+Guía para instalar MasSocialConecta.
+
+1. Requisitos
+Se requiere un servidor web con soporte PHP y un motor de base de datos SQL.
+
+1.1. Servidor WEB con PHP
+Para instalar este Sistema en un servidor se requiere tener un servidor Web con PHP instalado y
+funcionando.
+Para su funcionamiento completo se requiere un servidor Linux con Apache y PHP, aunque puede
+funcionar las partes básicas en otros sistemas operativos y otros servidores web, siempre que
+tengan PHP instalado.
+La instalación de PHP debe estar compilada con soporte de sesiones y una base de
+datos SQL. Se sugiere MySQL, dado que MasSocialConecta solo se ha probado 
+en esta base de datos.
+
+1.2. Base de Datos.
+El entorno de ejecución soporta varias Bases de Datos SQL. 
+Aunque para MasSocialConecta se recomienda utilizar MySQL, por haberse probado solamente en esta base de datos.
+
+2. Procedimiento de Instalación
+Partiendo del paquete completo (tgz) de la aplicacion (que contiene los programas y los datos) se
+puede instalar la aplicacion en cualquier servidor que cumpla los requisitos anteriores. Esta
+instalacion puede realizarse tantas veces se desee en el mismo o en distintos servidores. Esto
+permite tener distintas copias de la aplicación, incluso en el mismo servidor.
+
+2.1. Descompresión del paquete
+Primero se debe descomprimir el paquete "tgz" en un directorio accesible por el servidor Web. Y
+se deben poner los permisos del servidor web a todo el árbol de directorios y ficheros
+descomprimidos (chown -R yourwebserveruser:webservergroup /webserver/directory/MASSOCIALCONECTA).
+Esta instalación se puede repetir en otros directorios del mismo servidor, y tener múltiples
+aplicaciones instaladas en el mismo ordenador (cada una con sus propios datos y programas).
+Después de descomprimir el paquete, se procede a crear la base de datos.
+El paquete base viene con una base de datos (MASSOCIALCONECTA.sql) que define las tablas mínimas y trae un
+conjunto de datos de pruebas (usuarios, perfiles, noticias).
+
+2.2. Creación de la Base de Datos 
+Para crear la base de datos se debe cargar a partir del fichero 
+"MASSOCIALCONECTA.sql" que contiene las tablas y datos, por ejemplo para MySQL se deben ejecutar los comandos:
+mysqladmin -u root -p create MASSOCIALCONECTA
+mysql -u root -p MASSOCIALCONECTA < privado/MASSOCIALCONECTA.sql
+En este ejemplo se utiliza el usuario root, suponiendo que éste tiene permiso para acceder a
+MySQL, y el fichero "privado/MASSOCIALCONECTA.sql" que contiene las tablas y datos de nuestra aplicacion base
+(hay un conjunto de tablas que son imprescindibles para el control y funcionamiento basico
+-bloques, modulos, perfiles, usuarios-).
+
+2.3. Configuración
+Una vez cargadas las tablas se debe copiar el fichero config.default.php como "config.php" y
+modificar en éste último las constantes PHP a los valores correspondientes a nuestra instalación.
+
+
+3. Comenzando a Usar la Herramienta
+Una vez instalado se puede comprobar desde un navegador su buen funcionamiento,
+poniendo la URL que corresponde a nuestra servidor y directorio.
+La instalacion básica define el usuario "admin" con clave "admin" que permite comenzar a usar la
+herramienta con todos los permisos. Se aconseja cambiar la clave de acceso de este usuario, una
+vez instalado.
+

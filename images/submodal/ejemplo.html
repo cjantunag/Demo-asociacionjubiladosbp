@@ -1,0 +1,31 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<title>submodal DHTML Modal Dialog / Modal Window Test Page</title>
+<link rel="stylesheet" type="text/css" href="submodal.css" />
+<script type="text/javascript" src="common.js"></script>
+<script type="text/javascript" src="submodal.js"></script>
+<script type="text/javascript">
+var variableparent='vacia';
+function muestraVar(variable) {
+	alert('Variable pasada a funcion='+variable+'. VariableParent='+variableparent);
+}
+</script>
+</head>
+
+<body>
+<br/><br/>
+Para utilizar "submodal" en sustitucion de Ventanas POPUP se deben:
+<ul>
+<li> Sustituir los pasos de parametro javascript del POPUP a la ventana padre "opener.xxxx" por "window.top.xxx"
+<li> Sustituir los cierre de POPUP "window.close()" por "window.top.hidePopWin()".
+</ul>
+<br/><br/>
+
+<br/><button onclick="showPopWin('contenido.html', 400, 200, null);">Boton que lanza Ventana Modal de 400X200</button><br/><br/>
+<a class="submodal" href="contenido.html">Enlace a pagina que se muestra en Ventana Modal</a><br/><br/>
+<a class="submodal-200-400" href="contenido.html">Enlace a pagina que se muestra en Ventana Modal de 200X400</a><br/>
+
+</body>
+</html>

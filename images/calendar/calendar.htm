@@ -1,0 +1,32 @@
+<HEAD>
+		<script language='javascript' src="popcalendar.js"></script>
+		<SCRIPT LANGUAGE="JavaScript" SRC="lw_layers.js"></SCRIPT>
+	 	<SCRIPT LANGUAGE="JavaScript" SRC="lw_menu.js"></SCRIPT> 
+</HEAD>
+<BODY>
+					This demonstration caters for Netscape 4, but showing the date value in a text box. The trigger is a button, and the data container is the text box.<BR><BR>
+
+<blockquote>
+
+					<form name='mainform' method='post'>
+
+						<input type=text name='datevalue' size=10 maxlength=10 value='02/02/2002'>
+
+						<script language='javascript'>
+						<!--
+							if (!document.layers) {
+								document.write("<input type=button onclick='popUpCalendar(this, mainform.datevalue, \"dd/mm/yyyy\")' value='select' style='font-size:11px'>")
+
+							}
+
+						//-->
+						</script>					
+					</form>
+					</blockquote><BR><BR>
+				<B><U>Demonstration # 2</U></B><BR><BR>	
+					The following demonstration uses a button as both a trigger and data container.<BR><font color='#a0a0a0'>(You will not see anything below if you are using Netscape Navigator 4)</font><blockquote>
+
+					<input style='font-size:11px' type=button value="2 December 2001" onclick='popUpCalendar(this, this, "d mmm yyyy")'>
+
+					</blockquote><BR>
+<p><center>

@@ -1,0 +1,8 @@
+Todo for RAD Generator
+============================
+
+* Complete Translations
+* Design layout (templates) for "browse", "edit", "detail", ...
+* Field validation
+* Other SQL DataBases (Oracle, Postgress, ...)
+* Data integrity
